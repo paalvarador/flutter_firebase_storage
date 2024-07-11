@@ -43,7 +43,14 @@ class _HomePageState extends State<HomePage> {
                     },
                     child: const Text('Seleccionar Imagen')),
                 ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      if (imageToUpload == null) {
+                        return;
+                      }
+
+                      final uploaded =
+                          await imageService.uploadImage(imageToUpload!);
+                    },
                     child: const Text('Subir Imagen a Firebase'))
               ],
             )
